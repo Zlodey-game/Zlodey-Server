@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const statusSchema = new Schema({
     userID: { type: String },
+
     atk: { type: Number, default: 1 },
     def: { type: Number, default: 1 },
     agi: { type: Number, default: 1 },

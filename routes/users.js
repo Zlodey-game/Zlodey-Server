@@ -29,7 +29,7 @@ router.post('/login', (req, res)=> {
         if(result[0].pw != req.body.pw) {
           msg = "wrong pw";
         } else {
-          req.session.userid = req.body.id;
+          req.session.userID = req.body.id;
           msg = "success";
         }
       }
