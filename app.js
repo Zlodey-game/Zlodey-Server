@@ -5,11 +5,14 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
+
 const MongoStore = require('connect-mongo')(session);
 
 const indexRouter = require('./routes/index');
 const statusRouter = require('./routes/status');
 const usersRouter = require('./routes/users');
+const itemsRouter = require('./routes/items');
+const inventorysRouter = require('./routes/inventorys');
 
 const app = express();
 
@@ -28,22 +31,24 @@ app.use(session({
   saveUninitialized: true,
   resave: false,
   store: new MongoStore({
-    url: "mongodb://localhost/Zlodey",
-    collection: "sessions"
-  })
+    url: 'mongodb://localhost/Zlodey',
+    collection: 'sessions',
+  }),
 }));
 
 app.use('/', indexRouter);
 app.use('/status', statusRouter);
 app.use('/users', usersRouter);
+app.use('/items', itemsRouter);
+app.use('/inventorys', inventorysRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -57,7 +62,7 @@ mongoose.connect('mongodb://localhost/Zlodey', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-  useCreateIndex: true
+  useCreateIndex: true,
 });
 
 module.exports = app;
