@@ -1,0 +1,62 @@
+<script>
+  // $('stat up button').click(() => {
+  //   const stat = $('#atk stat up button');  // ex) atk, def, agi...
+  //   $.ajax({
+  //     url: `http://localhost:3000/status?stat=${stat}`,
+  //     type: 'post',
+  //     data: { stat: playerUnit.atk },
+  //     success: () => {
+
+  //     }
+  //   });
+  // });
+
+
+
+  $('stat up button').click(() => {
+    const stat = $('#atk stat up button');  // ex) atk, def, agi...
+    $.ajax({
+      url: 'http://localhost:3000/status/all',
+      type: 'post',
+      data: { 
+        "atk": playerUnit.atk,
+        "def": playerUnit.def,
+        "agi": playerUnit.agi,
+        "hp": playerUnit.maxHp,
+        "curHp": playerUnit.hp,
+        "mp": playerUnit.mp,
+        "level": playerUnit.lv,
+        "exp": playerUnit.exp,
+        "skillPoint": playerUnit.skillPoint
+       },
+      success: () => {
+
+      }
+    });
+  });
+
+  $('item equip').click(() => {
+    $.ajax({
+      url: 'http://localhost:3000/inventorys',
+      type: 'post',
+      data: { 
+        1: inventory[0],
+        2: inventory[1],
+        3: inventory[2],
+        4: inventory[3],
+        5: inventory[4],
+        6: inventory[5],
+        7: inventory[6],
+        8: inventory[7],
+        9: inventory[8],
+        10: inventory[9],
+        11: inventory[10],
+        12: inventory[11],
+        13: inventory[12],
+       },
+      success: () => {
+
+      }
+    });
+  });
+</script>

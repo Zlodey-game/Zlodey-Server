@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const findOrCreate = require('mongoose-find-or-create');
+
 const { Schema } = mongoose;
 
 const statusSchema = new Schema({
@@ -15,6 +17,8 @@ const statusSchema = new Schema({
 
   level: { type: Number, default: 1 },
   exp: { type: Number, default: 0 },
+  skillPoint: { type: Number, default: 0 },
 });
+statusSchema.plugin(findOrCreate);
 
 module.exports = mongoose.model('status', statusSchema);

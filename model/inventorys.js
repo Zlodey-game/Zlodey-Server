@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const findOrCreate = require('mongoose-find-or-create');
+
 const { Schema } = mongoose;
 
 const inventorySchema = new Schema({
@@ -14,6 +16,11 @@ const inventorySchema = new Schema({
   7: { type: Number, default: 0 },
   8: { type: Number, default: 0 },
   9: { type: Number, default: 0 },
+  10: { type: Number, default: 0 },
+  11: { type: Number, default: 0 },
+  12: { type: Number, default: 0 },
+  13: { type: Number, default: 0 },
 });
+inventorySchema.plugin(findOrCreate);
 
 module.exports = mongoose.model('inventory', inventorySchema);

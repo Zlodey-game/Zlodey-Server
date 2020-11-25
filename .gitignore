@@ -105,6 +105,5 @@ dist
 ssh_key.ppk
 package-lock.json
 *.jpg
-package-lock.json
-package-lock.json
-package-lock.json
+*.png
+아이템.csv

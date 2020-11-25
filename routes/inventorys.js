@@ -19,9 +19,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  InventoryModel.create({ userID: req.session.userID }, (err) => {
+  InventoryModel.create({ userID: req.session.userID }, (err, result) => {
     assert.strictEqual(err, null);
-    console.log('inventory new success');
+    console.log(result);
     res.send('inventory new success');
   });
 });
@@ -33,10 +33,10 @@ router.post('/', (req, res) => {
     inventory[i] = req.body[i];
   }
 
-  InventoryModel.updateOne({ userID: req.session.userID }, inventory, (err) => {
+  InventoryModel.updateOne({ userID: req.session.userID }, inventory, (err, result) => {
     assert.strictEqual(err, null);
     console.log('inventory success');
-    res.send('inventory success');
+    res.send(result);
   });
 });
 

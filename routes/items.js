@@ -32,4 +32,11 @@ router.get('/inventory', (req, res) => {
   });
 });
 
+router.post('/add', (req, res) => {
+  ItemModel.create(req.body, (err, result) => {
+    assert.strictEqual(err, null);
+    res.send(result);
+  });
+});
+
 module.exports = router;

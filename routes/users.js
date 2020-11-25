@@ -8,16 +8,8 @@ const UserModel = require('../model/users');
 
 const user = new UserModel();
 
-router.post('/register', (req, res) => {
-  user.id = req.body.id;
-  user.nickname = req.body.nickname;
-  user.pw = req.body.pw;
-
-  user.save((err) => {
-    assert.strictEqual(err, null);
-    console.log('register success');
-    res.send('register success');
-  });
+router.get('/login', (req, res) => {
+  res.render('login');
 });
 
 router.post('/login', (req, res) => {
@@ -35,7 +27,23 @@ router.post('/login', (req, res) => {
     }
 
     console.log(msg);
-    res.send(msg);
+    res.redirect('/');
+  });
+});
+
+router.get('/register', (req, res) => {
+  res.render('join');
+});
+
+router.post('/register', (req, res) => {
+  user.id = req.body.id;
+  user.nickname = req.body.nickname;
+  user.pw = req.body.pw;
+
+  user.save((err) => {
+    assert.strictEqual(err, null);
+    console.log('register success');
+    res.redirect('/users/login');
   });
 });
 

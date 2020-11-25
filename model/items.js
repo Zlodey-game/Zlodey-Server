@@ -5,7 +5,8 @@ const { Schema } = mongoose;
 const itemSchema = new Schema({
   itemID: { type: Number },
   name: { type: String },
-  filePath: { tpye: String },
+  type: { type: String },
+  drop: { type: Number },
 
   atk: { type: Number, default: 0 },
   def: { type: Number, default: 0 },

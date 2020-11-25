@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zlodey 로그인</title>
+</head>
+<link rel="stylesheet" href="../stylesheets/users.css">
+<body>
+    <div class="leftPanel">
+        <img src="../images/logo_black.png" id="logoImg" alt="">
+        
+        <form action="http://localhost:3000/users/login" id="loginForm" method="post">
+            <h1>로그인</h1>    
+            <input type = "text" name = "id" placeholder="아이디"/><br>
+            <input type = "password" name = "pw" placeholder="비밀번호"/>
+            <br><br><br><br>
+            <input type = "submit" id = "submit" value="" disabled/>
+        </form>
+        <a href="/users/register" id = "foot">계정 생성</a>
+    </div>
+    
+</body>
+<script>
+    var form = document.getElementById('loginForm');
+    
+    form.addEventListener('input', e =>{
+        var id = form.id.value;
+        var passwd = form.pw.value;
+        
+        if(id !='' && passwd != '') form.submit.disabled = false;
+        else form.submit.disabled = true;
+    });
+    form.id.onkeyup = function(e){
+        var v = this.value;
+    this.value = v.replace(/[^a-z0-9]/gi, '');
+}
+</script>
+</html>
